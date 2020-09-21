@@ -131,6 +131,13 @@ func main() {
 			sess.Out.Fatal("Unable to parse input as Nmap/Masscan XML: %s\n", err)
 			os.Exit(1)
 		}
+	} else if *sess.Options.Custom {
+		parser := parsers.NewCustomParser()
+		targets, err = parser.Parse(reader)
+		if err != nil {
+			sess.Out.Fatal("Unable to parse input as Custom: %s\n", err)
+			os.Exit(1)
+		}
 	} else {
 		parser := parsers.NewRegexParser()
 		targets, err = parser.Parse(reader)
