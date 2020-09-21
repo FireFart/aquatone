@@ -27,13 +27,12 @@ func (p *CustomParser) Parse(r io.Reader) ([]string, error) {
 		}
 		host := s[0]
 		ports := s[1]
-		protocol := "http"
 		for _, portString := range strings.Split(ports, ",") {
 			port, err := strconv.Atoi(portString)
 			if err != nil {
 				return nil, fmt.Errorf("invalid port %s", portString)
 			}
-			targets = append(targets, core.HostAndPortToURL(host, port, protocol))
+			targets = append(targets, core.HostAndPortToURL(host, port, ""))
 		}
 	}
 	return targets, nil
