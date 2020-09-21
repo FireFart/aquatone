@@ -152,9 +152,6 @@ func main() {
 		os.Exit(1)
 	}
 
-	fmt.Println(targets)
-	os.Exit(0)
-
 	sess.Out.Important("Targets    : %d\n", len(targets))
 	sess.Out.Important("Threads    : %d\n", *sess.Options.Threads)
 	sess.Out.Important("Ports      : %s\n", strings.Trim(strings.Replace(fmt.Sprint(sess.Ports), " ", ", ", -1), "[]"))
